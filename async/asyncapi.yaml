@@ -1,0 +1,22 @@
+asyncapi: '3.0.0'
+info:
+  title: UnifiedPOS Device Callbacks
+  version: '1.0.0'
+  description: |
+    Describes asynchronous communications from UnifiedPOS devices to clients
+  contact:
+    name: OMG Retail Domain Task Force
+    email: retail-chairs@omg.org
+servers: 
+  upos-server:
+    host: 'http://upos_example.com/api/v2'
+    protocol: winsockets
+defaultContentType: application/json
+
+channels:
+  sessionEvents:
+    description: Channel where session publishes events
+    address: /events/{sessionID} 
+    messages:
+      $ref: './components/messages/events.yaml'
+

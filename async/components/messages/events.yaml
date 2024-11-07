@@ -1,0 +1,5 @@
+DeviceEvent:
+  description: |
+    Event publisned by device.
+  payload:
+    $ref: ../../../models/deviceevents.yaml#/DeviceEvent

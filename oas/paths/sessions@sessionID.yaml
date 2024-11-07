@@ -1,0 +1,33 @@
+get:
+  parameters:
+    - name: deviceID
+      in: path
+      description: Identifier of UnifiedPOS device
+      schema:
+        type: string
+    - name: sessionID
+      in: path
+      description: Identifier of UnifiedPOS device
+      schema:
+        type: string
+  tags:
+    - Session
+  summary: Get  device session
+  description: |
+    This operation returns devie session 
+  operationId: getSessionID
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: "../components/schemas/device.yaml#/Device"
+          example:
+            deviceID: 'POS Printer 1' 
+            category: POSPrinter
+    '403':
+      description: Forbidden
+    '404':
+          description: Device not found  
+    

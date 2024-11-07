@@ -1,0 +1,20 @@
+get:
+  tags:
+    - Device
+  summary: Get list of devices
+  description: |
+    This operation returns list of all devices 
+  operationId: getDevices
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/device.yaml#/DeviceCollection
+          example:
+            - deviceID: 'POS Printer 1' 
+              category: POSPrinter
+    '403':
+      description: Forbidden
+    

@@ -1,0 +1,10 @@
+Device:
+  type: object
+  description: |
+    UnifiedPOS device.
+  $ref: ../../../models/device.yaml#/Device
+
+DeviceCollection:
+  description: |
+    Collection of devices.
+  $ref: ../../../models/device.yaml#/DeviceCollection

@@ -1,0 +1,28 @@
+openapi: 3.1.0
+info: 
+  title: UnifiedPOS V2 POSPrinter API
+  version: 2.0.0
+  contact:
+    email: retail-chairs@omg.org
+    url: 'https://www.omg.org/retail/'
+  license:
+    name: MIT license
+    identifier: MIT
+security: [] 
+servers: 
+  - url: 'http://upos_example.com/api/v2'     
+paths:
+  '/devices':
+    $ref: 'paths/devices.yaml'
+  '/devices/{deviceID}':
+    $ref: 'paths/devices@deviceID.yaml'
+  '/devices/{deviceID}/capabilities':
+    $ref: 'paths/devicecapabilities.yaml'
+  '/devices/{deviceID}/sessions':
+    $ref: 'paths/devicesessions.yaml'
+  '/devices/{deviceID}/sessions/{sessionID}':
+    $ref: 'paths/sessions@sessionID.yaml'
+  '/sessions/{sessionID}':
+    $ref: 'paths/sessions@sessionID.yaml'
+  '/sessions/{sessionID}/events':
+    $ref: 'paths/events.yaml'  

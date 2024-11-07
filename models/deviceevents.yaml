@@ -1,0 +1,41 @@
+DeviceEvent:
+  description: |
+    UnifiedPOS device.
+  type: object
+  properties:
+    eventID:
+      description: |
+        Event identifier
+      type: string
+    eventType:
+      description: |
+        Type of the event
+      type: string
+    category:
+      $ref: '#/DeviceEventTypeEnum'
+    sequenceNumber:
+      description: |
+        Sequence number of the event in the current session
+      type: integer
+  required:
+    - eventID
+    - eventType
+  additionalProperties: false
+
+DeviceEventTypeEnum:
+  description: |
+    Category of UnifiedPOS device
+  type: string
+  enum:
+    - Data
+    - Error
+    - OutputComplete
+    - StatusChange
+    - Unknown  
+    
+DeviceEventCollection:
+  description: |
+    Collection of devices.
+  type: array
+  items:
+    $ref: '#/DeviceEvent'

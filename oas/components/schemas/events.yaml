@@ -1,0 +1,4 @@
+DeviceEventCollection:
+  description: |
+    Collection of devices.
+  $ref: ../../../models/deviceevents.yaml#/DeviceEventCollection

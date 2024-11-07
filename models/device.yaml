@@ -1,0 +1,33 @@
+Device:
+  description: |
+    UnifiedPOS device.
+  type: object
+  properties:
+    deviceID:
+      description: |
+        Device identifier
+      type: string
+    logicalName:
+      description: |
+        Logical name of the device
+      type: string
+    category:
+      $ref: '#/DeviceCategoryEnum'
+  required:
+    - deviceID
+  additionalProperties: false
+
+DeviceCategoryEnum:
+  description: |
+    Category of UnifiedPOS device
+  type: string
+  enum:
+    - POSPrinter
+    - Unknown  
+    
+DeviceCollection:
+  description: |
+    Collection of devices.
+  type: array
+  items:
+    $ref: '#/Device'

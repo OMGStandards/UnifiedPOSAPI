@@ -1,0 +1,27 @@
+get:
+  parameters:
+    - name: sessionID
+      in: path
+      description: Identifier of UnifiedPOS device
+      schema:
+        type: string
+  tags:
+    - Events
+  summary: Get list of session events
+  description: |
+    This operation returns list of events within session 
+  operationId: getEvents
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: ../components/schemas/events.yaml#/DeviceEventCollection
+          example:
+            - eventID: '6e0b20b7-7eb7-40c7-8020-6f334de8b624' 
+              eventType: Error
+              sequenceNumber: 233
+    '403':
+      description: Forbidden
+    
