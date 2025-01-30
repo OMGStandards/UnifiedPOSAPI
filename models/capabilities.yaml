@@ -1,0 +1,362 @@
+CharactersPerLineCollection:
+  type: array
+  items:
+    type: integer
+
+CharacterSetCollection:
+  description: An array of character sets.
+  type: array
+  items:
+    type: integer
+
+RotationCapabilityEnum:
+  description: |
+    Enumeration of supported rotations.
+    Left90 - Object or text may be rotated 90° to the left.
+      Unified POS 1 name: value L90.
+    Right90 - Object or text may be rotated 90° to the right.
+      Unified POS 1 name: value R90.
+    Rotate180 - Object or text may be rotated 180° - upside down.
+      Unified POS 1 name: value 180.
+    Angle: - Object or text may be printed rotated at certain angle.
+  type: string
+  enum:
+    - Left90
+    - Right90
+    - Rotate180
+    - Angle
+
+RotationCollection:
+  description: Defines an array of rotation capabilities.
+  type: array
+  items:
+    $ref: '#/RotationCapabilityEnum'
+
+CustomColorCollection:
+  description: An array of possible custom colors.
+  type: array
+  items:
+    type: integer
+
+ColorCapabilityEnum:
+  description: |
+    Enumeration of color capabilities.
+    Mono - Suppors only one color.
+    TwoColor - Suppors two colors: primary and secondary.
+    CustomColors - Suppors custom colors specified by CustomColorList.
+    FullColor - Suppors full color mode.
+    FullWithCustomColors - Suppors full color mode and custom colors.
+  type: string
+  enum:
+    - Mono
+    - TwoColor
+    - CustomColors
+    - FullColor
+    - FullWithCustomColors
+
+MarkSensedPaperFeedEnum:
+  description: |
+    Enumeration of mark sensed paper feed capabilities.
+    Cutter - Feed the Mark Sensed paper to the auto-cutter cutting position.
+      Unified POS 1 name: value PTR_MF_TO_CUTTER.
+    CurrentTopOfForm - Feed the Mark Sensed paper to the present paper’s
+      top of form. (Reverse feed if required)
+      Unified POS 1 name: value PTR_MF_TO_CURRENT_TOF.
+    NextTopOfForm - Feed the Mark Sensed paper to the paper’s next top
+      of form.
+      Unified POS 1 name: value PTR_MF_TO_NEXT_TOF.
+    Takeup - Feed the Mark Sensed paper to the paper take-up position.
+      Unified POS 1 name: value PTR_MF_TO_TAKEUP.
+  type: string
+  enum:
+    - Cutter
+    - CurrentTopOfForm
+    - NextTopOfForm
+    - Takeup
+
+MarkSensedPaperFeedCollection:
+  description: Defines an array of mark feed capabilities.
+  type: array
+  items:
+    $ref: '#/MarkSensedPaperFeedEnum'
+
+CartridgeSensorEnum:
+  description: |
+    Enumeration of cartridge sensor capabilities.
+    Cleaning - There is a function to indicate that the head is being cleaned.
+      Unified POS 1 name: value PTR_CART_CLEANING.
+    Empty - There is a function to indicate that the Cartridge is empty.
+      Unified POS 1 name: value PTR_CART_EMPTY.
+    NearEnd - There is a function to indicate that the color Cartridge is
+      near end.
+      Unified POS 1 name: value PTR_CART_NEAREND.
+    Removed - There is a function to indicate that the Cartridge has been
+      removed.
+      Unified POS 1 name: value PTR_CART_REMOVED.
+  type: string
+  enum:
+    - Cleaning
+    - Empty
+    - NearEnd
+    - Removed
+
+CartridgeSensorCollection:
+  description: Defines an array of cartridge sensor capabilities.
+  type: array
+  items:
+    $ref: '#/CartridgeSensorEnum'
+
+CharacterSetCapabilityEnum:
+  description: |
+    Enumeration of character set capability.
+    Numeric - Character set supports numeric data, plus space, minus, and
+      period.
+    Alpha - Character set supports uppercase alphabetic plus numeric,
+      space, minus, and period.
+    Ascii - Character set supports all ASCII characters 0x20 through 0x7F.
+    Kana - Character set supports partial code page 932, including ASCII
+      characters 0x20 through 0x7F and the Japanese Kana characters 0xA1
+      through 0xDF, but excluding the Japanese Kanji characters.
+    Kanji - Character set supports code page 932, including the Shift-JIS
+      Kanji characters, Levels 1 and 2.
+    Unicode - Character set supports Unicode.
+  type: string
+  enum:
+    - Numeric
+    - Alpha
+    - Ascii
+    - Kana
+    - Kanji
+    - Unicode
+
+FontTypefaceCollection:
+  description: Array of fonts/typefaces.
+  type: array
+  items:
+    type: string
+
+ReceiptStationCapabilities:
+  description: Capabilities of the receipt station.
+  type: object
+  properties:
+    bold:
+      description: |
+        Indicates if the receipt print station can print bold characters.
+        Unified POS 1 name: property CapRecBold.
+      type: boolean
+    italic:
+      description: |
+        Indicates if the receipt print station can print italic characters.
+        Unified POS 1 name: property CapRecItalic.
+      type: boolean
+    underline:
+      description: |
+        Indicates if the receipt print station can underline characters.
+        Unified POS 1 name: property CapRecUnderline.
+      type: boolean
+    fontTypefaceList:
+      description: |
+        Fonts and/or typefaces that are supported by the receipt station.
+        The string consists of collection of font or typeface names.
+        In Japan, this property will frequently include the fonts Mincho
+        and Gothic. Other fonts or typefaces may be commonly supported in
+        other countries. If this element is absent or contains an empty
+        string then only the default typeface is supported.
+        Unified POS 1 name: property FontTypefaceList.
+      type: array
+      items:
+        type: string
+    doubleHigh:
+      description: |
+        Indicates if the receipt station can print double high characters.
+        Unified POS 1 name: property CapRecDhigh.
+      type: boolean
+    doubleWide:
+      description: |
+        Indicates if the receipt station can print double wide characters.
+        Unified POS 1 name: property CapRecDwide.
+      type: boolean
+    doubleWideDoubleHigh:
+      description: |
+        Indicates if the receipt station can print double high/wide characters.
+        Unified POS 1 name: property CapRecDwideDhigh.
+      type: boolean
+    barCode:
+      description: |
+        Indicates if the receipt station has barcode printing capability.
+        Unified POS 1 name: property CapRecBarCode.
+      type: boolean
+    image:
+      description: |
+        Indicates if the receipt print station can print images.
+        Unified POS 1 name: property CapRecBitmap.
+      type: boolean
+    color:
+      description: |
+        Indicates the availability of receipt color cartridges.
+        Unified POS 1 name: property CapRecColor. In Unified POS 1 the
+        property contains values from Color and CustomColorList elements.
+      type: string
+      enum:
+        - Mono
+        - TwoColor
+        - CustomColors
+        - FullColor
+        - FullWithCustomColors
+    customColors:
+      description: |
+        Device specific custom color cartridges for the receipt station.
+        It is only provided if the property Color holds the values
+        CustomColors or FullWithCustomColors.
+        Unified POS 1 name: property CapRecColor. In Unified POS 1 the
+        property contains values from Color and CustomColorList elements.
+      type: array
+      items:
+        type: integer
+    emptySensor:
+      description: |
+        Indicates if the receipt station has an out-of-paper sensor.
+        Unified POS 1 name: property CapRecEmptySensor.
+      type: boolean
+    nearEndSensor:
+      description: |
+        Indicates if the receipt station has a low paper sensor.
+        Unified POS 1 name: property CapRecNearEndSensor.
+      type: boolean
+    cartridgeSensors:
+      description: |
+        Collection of cartridge monitoring sensors at the receipt station.
+        Unified POS 1 name: property CapRecCartridgeSensor.
+      type: array
+      items:
+        $ref: '#/CartridgeSensorEnum'
+    markSensedPaperFeeds:
+      description: |
+        Collection of mark sernsed paper feeds supported by receipt station.
+        Unified POS 1 name: property CapRecMarkFeed.
+      type: array
+      items:
+        $ref: '#/MarkSensedPaperFeedEnum'
+    paperCut:
+      description: |
+        Indicates if the receipt station can perform paper cuts.
+        Unified POS 1 name: property CapRecPapercut.
+      type: boolean
+    stamp:
+      description: |
+        Indicates if the receipt has a stamp capability.
+        Unified POS 1 name: property CapRecStamp.
+      type: boolean
+    textRotations:
+      description: |
+        Supported text rotations of the receipt print station.
+        This property was not available in Unified POS 1. It combines
+        the following capabilities from UnifiedPOS 1:
+        CapRecLeft90, CapRecRight90, CapRecRotate180.
+        An empty collection or absence of the property indicates that
+        text rotaion is not supported at this station.
+      type: array
+      items:
+        $ref: '#/RotationCapabilityEnum'
+    barCodeRotations:
+      description: |
+        Supported barcode rotations of the receipt print station.
+        An empty collection or absence of the property indicates that
+        bar code rotaion is not supported at this station.
+        Unified POS 1 name: property RecBarCodeRotationList.
+      type: array
+      items:
+        $ref: '#/RotationCapabilityEnum'
+    imageRotations:
+      description: |
+        Supported image rotations of the receipt print station.
+        An empty collection or absence of the property indicates that
+        bar code rotaion is not supported at this station.
+        Unified POS 1 name: property RecBitmapRotationList.
+      type: array
+      items:
+        $ref: '#/RotationCapabilityEnum'
+    charactersPerLineWidths:
+      description: |
+        Supported widths in terms of characters per line by the station.
+        Unified POS 1 name: property RecLineCharsList.
+      type: array
+      items:
+        type: integer
+    horizontalRuledLine:
+      description: |
+        Indicates if horizontal ruled line is supported by the station.
+        Unified POS 1 name: CapRecRuledLine value PTR_RL_HORIZONTAL
+      type: boolean
+    verticalRuledLine:
+      description: |
+        Indicates if vertical ruled line is supported by the station.
+        Unified POS 1 name:  CapRecRuledLine value PTR_RL_VERTICAL.
+      type: boolean
+
+JournalStationCapabilities:
+  description: Capabilities of the journal station.
+  type: object
+  properties:
+    bold:
+      description: |
+        Indicates if the journal print station can print bold characters.
+        Unified POS 1 name: property CapJrnBold.
+      type: boolean
+    italic:
+      description: |
+        Indicates if the journal print station can print italic characters.
+        Unified POS 1 name: property CapJrnItalic.
+      type: boolean
+    underline:
+      description: |
+        Indicates if the journal print station can underline characters.
+        Unified POS 1 name: property CapJrnUnderline.
+      type: boolean
+    doubleHigh:
+      description: |
+        Indicates if the journal station can print double high characters.
+        Unified POS 1 name: property CapJrnDhigh.
+      type: boolean
+    doubleWide:
+      description: |
+        Indicates if the journal station can print double wide characters.
+        Unified POS 1 name: property CapJrnDwide.
+      type: boolean
+    doubleWideDoubleHigh:
+      description: |
+        Indicates if the journal station can print double high/wide characters.
+        Unified POS 1 name: property CapJrnDwideDhigh.
+      type: boolean
+    color:
+      description: |
+        Indicates the availability of journal color cartridges.
+        Unified POS 1 name: property CapRecColor. In Unified POS 1 the
+        property contains values from Color and CustomColorList elements.
+      type: string
+      enum:
+        - Mono
+        - TwoColor
+        - CustomColors
+        - FullColor
+        - FullWithCustomColors
+    customColors:
+      description: |
+        Device specific custom color cartridges for the journal station.
+        It is only provided if the property Color holds the values
+        CustomColors or FullWithCustomColors.
+        Unified POS 1 name: property CapJrnColor. In Unified POS 1 the
+        property contains values from Color and CustomColorList elements.
+      type: array
+      items:
+        type: integer
+    emptySensor:
+      description: |
+        Indicates if the journal station has an out-of-paper sensor.
+        Unified POS 1 name: property CapJrnEmptySensor.
+      type: boolean
+    nearEndSensor:
+      description: |
+        Indicates if the journal station has a low paper sensor.
+        Unified POS 1 name: property CapJrnNearEndSensor.
+      type: boolean

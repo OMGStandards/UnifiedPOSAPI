@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info: 
-  title: UnifiedPOS V2 POSPrinter API
+  title: UnifiedPOS V2 API
   version: 2.0.0
   contact:
     email: retail-chairs@omg.org
@@ -16,8 +16,6 @@ paths:
     $ref: 'paths/devices.yaml'
   '/devices/{deviceID}':
     $ref: 'paths/devices@deviceID.yaml'
-  '/devices/{deviceID}/capabilities':
-    $ref: 'paths/devicecapabilities.yaml'
   '/devices/{deviceID}/sessions':
     $ref: 'paths/devicesessions.yaml'
   '/devices/{deviceID}/sessions/{sessionID}':
