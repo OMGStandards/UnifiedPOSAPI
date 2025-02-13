@@ -1,0 +1,28 @@
+get:
+  parameters:
+    - name: deviceID
+      in: path
+      description: Identifier of UnifiedPOS device
+      schema:
+        type: string
+  tags:
+    - Device
+  summary: Get list of device capabilites
+  description: |
+    This operation returns devie capabilities 
+  operationId: getDeviceCapabilites
+  responses:
+    '200':
+      description: Success
+      content:
+        application/json:
+          schema:
+            $ref: "../components/schemas/device.yaml#/Device"
+          example:
+            deviceID: 'POS Printer 1' 
+            category: POSPrinter
+    '403':
+      description: Forbidden
+    '404':
+          description: Device not found  
+    
